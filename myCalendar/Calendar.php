@@ -16,10 +16,10 @@ class Calendar {
     private $daysInMonth=0;
     private $naviHref= null;
      
-    /* PUBLIC */  
-    /**
-    * print out the calendar
-    */
+    /* PUBLIC  
+    
+    print out the calendar*/
+    
     public function show() {
         $year  = null;
         $month = null;
@@ -63,10 +63,10 @@ class Calendar {
         return $content;   
     }
      
-    /* PRIVATE */ 
-    /**
-    * create the li element for ul
-    */
+    /* PRIVATE 
+    
+    create the li element for ul*/
+ 
     private function _showDay($cellNumber){ 
         if ($this->currentDay == 0) {
             $firstDayOfTheWeek = date('N', strtotime($this->currentYear . '-' . $this->currentMonth . '-01'));
@@ -89,9 +89,8 @@ class Calendar {
             return '<li class="' . $class_day . '">' . $cellContent . '</li>' . "\r\n";
         }
      
-    /**
-    * create navigation
-    */
+    /*create navigation*/
+ 
     private function _createNavi(){      
         $nextMonth = $this->currentMonth==12?1:intval($this->currentMonth)+1;      
         $nextYear = $this->currentMonth==12?intval($this->currentYear)+1:$this->currentYear;       
@@ -105,9 +104,8 @@ class Calendar {
             '</div>';
     }
          
-    /**
-    * create calendar week labels
-    */
+    /*create calendar week labels*/
+ 
     private function _createLabels(){                 
         $content='';       
         foreach($this->dayLabels as $index=>$label){           
@@ -116,9 +114,8 @@ class Calendar {
         return $content;
     }
      
-    /**
-    * calculate number of weeks in a particular month
-    */
+    /*calculate number of weeks in a particular month*/
+ 
     private function _weeksInMonth($month=null,$year=null){      
         if( null==($year) ) {
             $year =  date("Y",time()); 
@@ -138,9 +135,8 @@ class Calendar {
         return $numOfweeks;
     }
  
-    /**
-    * calculate number of days in a particular month
-    */
+    /*calculate number of days in a particular month*/
+ 
     private function _daysInMonth($month=null,$year=null){    
         if(null==($year))
             $year =  date("Y",time()); 
