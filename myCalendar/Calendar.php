@@ -1,5 +1,4 @@
 <?php
-/*code was taken from this web resource - https://www.startutorial.com/articles/view/how-to-build-a-web-calendar-in-php*/
 
 class Calendar {
  
