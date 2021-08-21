@@ -1,15 +1,23 @@
+<?php
+?>
 <!DOCTYPE html>
-<html lang="en">
-	<title>My Calendar</title>
-	
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins">
-        <link href="calendar.css" type="text/css" rel="stylesheet" />
-	
-	<style>
+<html>
+ <head>
+  <title>My Calendar</title>
+  <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins">
+    <link href="calendar.css" type="text/css" rel="stylesheet" />
+    <link rel="stylesheet" href="fullcalendar.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha.6/css/bootstrap.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.4.0/fullcalendar.min.js"></script>
+  
+  <style>
 	body,h1,h2,h3,h4,h5 {font-family: "Poppins", sans-serif}
 	body {font-size:16px;}
 	.w3-half img{margin-bottom:-6px;margin-top:16px;opacity:0.8;cursor:pointer}
@@ -65,58 +73,9 @@
           border: 1px solid #ccc;  
         }
       }
-      
-      /* Remove margins and padding from the list */
-        ul {
-          margin: 0;
-          padding: 0;
-        }
-
-        /* Style the list items */
-        ul li {
-          position: relative;
-          padding: 12px 8px 12px 40px;
-          list-style-type: none;
-          font-size: 18px;
-          transition: 0.2s;
-        }
-
-        /* When clicked on, add strike out text */
-        ul li.checked {
-          text-decoration: line-through;
-        }
-
-        /* Style the input */
-        input {
-          margin: 0;
-          border: none;
-          border-radius: 0;
-          width: 75%;
-          padding: 10px;
-          float: left;
-          font-size: 16px;
-        }
-
-        /* Style the "Add" button */
-        .addBtn {
-          padding: 10px;
-          width: 25%;
-          background: #d9d9d9;
-          color: #555;
-          float: left;
-          text-align: center;
-          font-size: 16px;
-          cursor: pointer;
-          transition: 0.3s;
-          border-radius: 0;
-        }
-
-        .addBtn:hover {
-          background-color: #bbb;
-        }
 	</style>
 	
-	<body>
+        <body>
             <!-- Search bar -->
             <div class="topnav">    
                 <div class="search-container">
@@ -129,7 +88,7 @@
 		<nav class="w3-sidebar w3-red w3-collapse w3-top w3-large w3-padding" style="z-index:3;width:250px;font-weight:bold;" id="mySidebar"><br>
 		  <a href="javascript:void(0)" onclick="w3_close()" class="w3-button w3-hide-large w3-display-topleft" style="width:100%;font-size:22px">Close Menu</a>
 		  <div class="w3-container">
-			<h3 class="w3-padding-64"><b>Website<br>Name</b></h3>
+			<h3 class="w3-padding-64"><b>TASK<br>CHECKER</b></h3>
 		  </div>
 		  <div class="w3-bar-block">
 			<a href="#Home" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Home</a> 
@@ -142,8 +101,8 @@
 
 		<!-- Top menu on small screens -->
 		<header class="w3-container w3-top w3-hide-large w3-red w3-xlarge w3-padding">
-		  <a href="javascript:void(0)" class="w3-button w3-red w3-margin-right" onclick="w3_open()">☰</a>
-		  <span>Website Name</span>
+		  <a href="javascript:void(0)" class="w3-button w3-red w3-margin-right" onclick="w3_open()">X</a>
+		  <span>Task Checker</span>
 		</header>
 
 		<!-- Overlay effect when opening sidebar on small screens -->
@@ -162,168 +121,12 @@
                     /*Calendar Top Navigation*/
                       div#calendar{
                         margin:0px auto;
-                        padding:0px;
-                        width: 602px;
+                        padding:20px;
                         font-family:Helvetica, "Times New Roman", Times, serif;
                       }
-
-                      div#calendar div.box{
-                          position:relative;
-                          top:0px;
-                          left:0px;
-                          width:100%;
-                          height:40px;
-                          background-color:   #787878 ;      
-                      }
-
-                      div#calendar div.header{
-                          line-height:40px;  
-                          vertical-align:middle;
-                          position:absolute;
-                          left:11px;
-                          top:0px;
-                          width:582px;
-                          height:40px;   
-                          text-align:center;
-                      }
-
-                      div#calendar div.header a.prev,div#calendar div.header a.next{ 
-                          position:absolute;
-                          top:0px;   
-                          height: 17px;
-                          display:block;
-                          cursor:pointer;
-                          text-decoration:none;
-                          color:#FFF;
-                      }
-
-                      div#calendar div.header span.title{
-                          color:#FFF;
-                          font-size:18px;
-                      }
-
-                      div#calendar div.header a.prev{
-                          left:0px;
-                      }
-
-                      div#calendar div.header a.next{
-                          right:0px;
-                      }
-
-                      /*Calendar Content Cells*/
-                      div#calendar div.box-content{
-                          border:1px solid #787878 ;
-                          border-top:none;
-                      }
-
-                      div#calendar ul.label{
-                          float:left;
-                          margin: 0px;
-                          padding: 0px;
-                          margin-top:5px;
-                          margin-left: 5px;
-                      }
-
-                      div#calendar ul.label li{
-                          margin:0px;
-                          padding:0px;
-                          margin-right:5px;  
-                          float:left;
-                          list-style-type:none;
-                          width:80px;
-                          height:40px;
-                          line-height:40px;
-                          vertical-align:middle;
-                          text-align:center;
-                          color:#000;
-                          font-size: 15px;
-                          background-color: transparent;
-                      }
-
-                      div#calendar ul.dates{
-                          float:left;
-                          margin: 0px;
-                          padding: 0px;
-                          margin-left: 5px;
-                          margin-bottom: 5px;
-                      }
-
-                      /** overall width = width+padding-right**/
-                      div#calendar ul.dates li{
-                          margin:0px;
-                          padding:0px;
-                          margin-right:5px;
-                          margin-top: 5px;
-                          line-height:80px;
-                          vertical-align:middle;
-                          float:left;
-                          list-style-type:none;
-                          width:80px;
-                          height:80px;
-                          font-size:25px;
-                          background-color: #DDD;
-                          color:#000;
-                          text-align:center; 
-                      }
-                      
-                      div#calendar ul.dates li.this_today {
-                        background-color: #ff0000;
-                      }
-
-                      :focus{
-                          outline:none;
-                      }
-
-                      div.clear{
-                          clear:both;
-                      }     
-                  </style>  
+                  </style> 
                   
-                    <div class="w3-row-padding w3-center w3-margin-top">
-                        <div class="w3-third">
-                            <div class="w3-card w3-container" style="min-height:460px">
-                                <div id="myDIV" class="header">
-                                  <h2 style="margin:5px">Coming Up</h2>
-                                </div>
-                                <button onclick="myAccFunc('Demo1')" class="w3-padding-16 w3-theme w3-button w3-block w3-left-align">Task 1</button>
-                                <input type="text" id="myInput" placeholder="add items to task 1...">
-                                  <span onclick="newElement()" class="addBtn"><i class="fa fa-plus"></i></span>
-                                  <div id="Demo1" class="w3-hide" style="background-color:#f44336">
-                                    <div class="w3-container">
-                                      <ul id="myUL"></ul>
-                                    </div>
-                                  </div>
-                                  <button onclick="myAccFunc('Demo2')" class="w3-padding-16 w3-theme w3-button w3-block w3-left-align">Task 2</button>
-                                        <div id="Demo2" class="w3-hide" style="background-color:#f44336">
-                                          <a href="#" class="w3-button w3-block w3-left-align">Check out this video</a>
-                                          <a href="#" class="w3-button w3-block w3-left-align">Upload certificate</a>
-                                        </div>
-                                        <button onclick="myAccFunc('Demo3')" class="w3-padding-16 w3-theme w3-button w3-block w3-left-align">Task 3</button>
-                                            <div id="Demo3" class="w3-hide" style="background-color:#f44336">
-                                              <div class="w3-container">
-                                                <p>...A paragraph</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                              </div>
-
-                    <div class="w3-half">
-                        <div>
-                          <!-- Call to calendar class-->
-                            <?php
-                                include 'Calendar.php';
-                                $calendar = new Calendar();
-                                echo $calendar->show();
-                            ?>
-                        </div>
-                    </div>
-                  </div>
-                  
-                  <footer><p></p></footer>
-		<!-- End page content -->
-		</div>
-
-		<script>
+                <script>
 		// Script to open and close sidebar
 		function w3_open() {
 		  document.getElementById("mySidebar").style.display = "block";
@@ -335,38 +138,100 @@
 		  document.getElementById("myOverlay").style.display = "none";
 		}
                 
-		//Script to open and close accordion
-		function myAccFunc(id) {
-		  var x = document.getElementById(id);
-		  if (x.className.indexOf("w3-show") == -1) {
-			x.className += " w3-show";
-		  } else { 
-			x.className = x.className.replace(" w3-show", "");
-		  }
-		}
-                
-		// Add a "checked" symbol when clicking on a list item
-		var list = document.querySelector('ul');
-		list.addEventListener('click', function(ev) {
-		  if (ev.target.tagName === 'LI') {
-                    ev.target.classList.toggle('checked');
-		  }
-		}, false);
+                //Script for update, adding, and deleting on calendar   
+                $(document).ready(function() {
+                 var calendar = $('#calendar').fullCalendar({
+                  editable:true,
+                  header:{
+                   left:'prev,next today',
+                   center:'title',
+                   right:'month,agendaWeek,agendaDay'
+                  },
+                  events: 'loadFromDB.php',
+                  selectable:true,
+                  selectHelper:true,
+                  displayEventTime:false,
+                  select: function(start, end, allDay)
+                  {
+                   var title = prompt("Enter Event Title");
+                   if(title)
+                   {
+                    var start = $.fullCalendar.formatDate(start, "Y-MM-DD HH:mm:ss");
+                    var end = $.fullCalendar.formatDate(end, "Y-MM-DD HH:mm:ss");
+                    $.ajax({
+                     url:"insertIntoDB.php",
+                     type:"POST",
+                     data:{title:title, start:start, end:end},
+                     success:function()
+                     {
+                      calendar.fullCalendar('refetchEvents');
+                      alert("Added Successfully");
+                     }
+                    })
+                   }
+                  },
+                  editable:true,
+                  eventResize:function(event)
+                  {
+                      var start = $.fullCalendar.formatDate(event.start, "Y-MM-DD HH:mm:ss");
+                   var end = $.fullCalendar.formatDate(event.end, "Y-MM-DD HH:mm:ss");
+                   var title = event.title;
+                   var id = event.id;
+                   $.ajax({
+                    url:"updateDB.php",
+                    type:"POST",
+                    data:{title:title, start:start, end:end, id:id},
+                    success:function(){
+                     calendar.fullCalendar('refetchEvents');
+                     alert('Event Update');
+                    }
+                   })
+                  },
 
-		// Create a new list item when clicking on the "Add" button
-		function newElement() {
-		  var li = document.createElement("li");
-		  var inputValue = document.getElementById("myInput").value;
-		  var t = document.createTextNode(inputValue);
-		  li.appendChild(t);
-		  if (inputValue === '') {
-                    alert("You must write something!");
-		  } else {
-                    document.getElementById("myUL").appendChild(li);
-		  }
-                document.getElementById("myInput").value = "";
-                }
-                
-		</script>  
-	</body>
+                eventDrop:function(event)
+                {
+                 var start = $.fullCalendar.formatDate(event.start, "Y-MM-DD HH:mm:ss");
+                 var end = $.fullCalendar.formatDate(event.end, "Y-MM-DD HH:mm:ss");
+                 var title = event.title;
+                 var id = event.id;
+                 $.ajax({
+                  url:"updateDB.php",
+                  type:"POST",
+                  data:{title:title, start:start, end:end, id:id},
+                  success:function()
+                  {
+                   calendar.fullCalendar('refetchEvents');
+                   alert("Event Updated");
+                  }
+                });
+                },
+
+                eventClick:function(event)
+                {
+                 if(confirm("Are you sure you want to remove it?"))
+                 {
+                  var id = event.id;
+                  $.ajax({
+                   url:"deleteFromDB.php",
+                   type:"POST",
+                   data:{id:id},
+                   success:function()
+                   {
+                    calendar.fullCalendar('refetchEvents');
+                    alert("Event Removed");
+                   }
+                  })
+                 }
+                },
+
+               });
+              });
+   
+  </script>
+ </head>
+ <body>
+  <div class="container">
+   <div id="calendar"></div>
+  </div>
+ </body>
 </html>
